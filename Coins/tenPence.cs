@@ -1,11 +1,20 @@
 ﻿using System;
 namespace VendingMachineProject
 {
-	public class fiftyPence
-	{
-		public fiftyPence()
-		{
-		}
-	}
+	public class tenPence : Coin
+    {
+        public tenPence(double name, int quantity, Coin nextValue)
+            : base(name, quantity, nextValue)
+        {
+            this.value = 0.1;
+            this.quantity = 10;
+        }
+
+        protected override void dispenseCoins(int count)
+        {
+            Console.WriteLine($"{count} x £0.10 coin");
+        }
+
+    }
 }
 
