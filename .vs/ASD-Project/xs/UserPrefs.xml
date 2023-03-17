@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{38A68D55-BBBD-4C10-B71F-E1ECE0D9E865}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.VendingMachineProject PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Input.cs">
+    <Files>
+      <File FileName="Program.cs" Line="14" Column="45" />
+      <File FileName="Snacks.cs" Line="30" Column="10" />
+      <File FileName="MoneyPool.cs" Line="15" Column="29" />
+      <File FileName="AskUserForInput.cs" Line="14" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ASD-Project" expanded="True">
+            <Node name="VendingMachineProject" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
