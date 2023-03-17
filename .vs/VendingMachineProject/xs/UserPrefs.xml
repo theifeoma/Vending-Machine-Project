@@ -3,18 +3,25 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Coin.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Coins/fivePence.cs">
     <Files>
-      <File FileName="Coin.cs" Line="120" Column="1" />
       <File FileName="Input.cs" />
-      <File FileName="Program.cs" />
-      <File FileName="Snacks.cs" />
+      <File FileName="Program.cs" Line="5" Column="1" />
+      <File FileName="Snacks.cs" Line="1" Column="1" />
+      <File FileName="twoPound.cs" Line="10" Column="31" />
+      <File FileName="fiftyPence.cs" Line="8" Column="28" />
+      <File FileName="fivePence.cs" Line="10" Column="32" />
+      <File FileName="twentyPence.cs" Line="10" Column="31" />
+      <File FileName="Coins/tenPence.cs" Line="10" Column="32" />
+      <File FileName="Coins/onePound.cs" Line="10" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VendingMachineProject" expanded="True">
-            <Node name="VendingMachineProject" expanded="True" />
+            <Node name="VendingMachineProject" expanded="True">
+              <Node name="Coins" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
