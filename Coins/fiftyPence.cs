@@ -3,6 +3,10 @@ namespace VendingMachineProject
 {
 	public class fiftyPence : Coin
 	{
+        public fiftyPence()
+        {
+        }
+
         public fiftyPence(double value, int quantity, Coin nextValue)
             : base(value, quantity, nextValue)
         {

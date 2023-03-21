@@ -6,7 +6,7 @@ namespace VendingMachineProject
         public static bool AskForInput(Snacks snack)
         {
             List<double> inputList = new List<double>();
-            Coin dummy = new Coin();
+            //Coin dummy = new Coin();
             double price = snack.getSnackPrice();
             //Snacks snackk = new Snacks();
 
@@ -43,28 +43,28 @@ namespace VendingMachineProject
                             Console.WriteLine("Coin will not be added, {0} is greater than 10", coinsToAdd + inputList.Sum());
                         }
 
-                        else
-                        {
-                            //coin input from user
-                            inputList.Add(coinsToAdd);
+                        //else
+                        //{
+                        //    //coin input from user
+                        //    inputList.Add(coinsToAdd);
 
-                            //updates the coin added to the coinPool
-                            dummy.UpdateInventory(coinsToAdd, 1);
+                        //    //updates the coin added to the coinPool
+                        //    dummy.UpdateInventory(coinsToAdd, 1);
 
-                            //reduce snack quantity
-                            snack.reduceSnackQuantity();
+                        //    //reduce snack quantity
+                        //    snack.reduceSnackQuantity();
 
-                            //change to be dispensed
-                            double change = dummy.ChangeChecker(inputList, snack);
-                            //Console.WriteLine(change);
+                        //    //change to be dispensed
+                        //    double change = dummy.ChangeChecker(inputList, snack);
+                        //    //Console.WriteLine(change);
 
 
-                            dummy.ChangeToGive(change);
+                        //    dummy.ChangeToGive(change);
 
-                            //test for if coin is decrementing and incrementing
-                            dummy.Print();
+                        //    //test for if coin is decrementing and incrementing
+                        //    dummy.Print();
 
-                        }
+                        //}
                     }
                     else
                     {

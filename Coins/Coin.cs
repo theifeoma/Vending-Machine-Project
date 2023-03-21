@@ -12,8 +12,16 @@ namespace VendingMachineProject
 
         public Coin(double value, int quantity, Coin nextCoin)
         {
-            this.value = 0.1;
-            this.quantity = 10;
+            this.value = value;
+            this.quantity = quantity;
+            this.nextCoin = nextCoin;
+        }
+
+        public Coin()
+        {
+            this.value = value;
+            this.quantity = quantity;
+            this.nextCoin = nextCoin;
         }
 
 
