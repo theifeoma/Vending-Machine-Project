@@ -3,8 +3,8 @@ namespace VendingMachineProject
 {
 	public class twentyPence : Coin
 	{
-        public twentyPence(double name, int quantity, Coin nextValue)
-            : base(name, quantity, nextValue)
+        public twentyPence(double value, int quantity, Coin nextValue)
+            : base(value, quantity, nextValue)
         {
             this.value = 0.2;
             this.quantity = 5;

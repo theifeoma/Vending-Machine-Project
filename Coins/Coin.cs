@@ -10,7 +10,7 @@ namespace VendingMachineProject
         protected int quantity;
         protected Coin nextCoin;
 
-        public Coin(double name, int quantity, Coin nextCoin)
+        public Coin(double value, int quantity, Coin nextCoin)
         {
             this.value = 0.1;
             this.quantity = 10;
@@ -44,6 +44,7 @@ namespace VendingMachineProject
         {
             this.nextCoin = coin;
         }
+
 
 
         //method to dispense change using recuresion
