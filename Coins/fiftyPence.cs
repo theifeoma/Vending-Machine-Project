@@ -5,6 +5,9 @@ namespace VendingMachineProject
 	{
         public fiftyPence()
         {
+            this.value = 0.5;
+            this.quantity = 4;
+            this.nextCoin = nextCoin;
         }
 
         public fiftyPence(double value, int quantity, Coin nextValue)
@@ -12,11 +15,12 @@ namespace VendingMachineProject
         {
             this.value = 0.5;
             this.quantity = 4;
+            this.nextCoin = nextCoin;
         }
 
         protected override void dispenseCoins(int count)
         {
-            Console.WriteLine($"{count} x £0.10 coin");
+            Console.WriteLine($"{count} x £0.50 coin");
         }
     
 	}

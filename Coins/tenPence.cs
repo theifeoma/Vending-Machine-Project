@@ -8,7 +8,17 @@ namespace VendingMachineProject
         {
             this.value = 0.1;
             this.quantity = 10;
+            this.nextCoin = nextCoin;
         }
+
+        public tenPence()
+        {
+            this.value = 0.1;
+            this.quantity = 10;
+            this.nextCoin = nextCoin;
+        }
+
+
 
         protected override void dispenseCoins(int count)
         {

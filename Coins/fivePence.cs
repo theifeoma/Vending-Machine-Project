@@ -8,11 +8,21 @@ namespace VendingMachineProject
         {
             this.value = 0.05;
             this.quantity = 20;
+            this.nextCoin = nextCoin;
         }
+
+        public fivePence()
+        {
+            this.value = 0.05;
+            this.quantity = 20;
+            this.nextCoin = nextCoin;
+        }
+
+
 
         protected override void dispenseCoins(int count)
         {
-            Console.WriteLine($"{count} x £0.10 coin");
+            Console.WriteLine($"{count} x £0.05 coin");
         }
     }
 }

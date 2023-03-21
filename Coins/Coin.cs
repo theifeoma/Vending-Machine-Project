@@ -75,7 +75,10 @@ namespace VendingMachineProject
         //abstract method implemented by other classes for the dispense function
         protected abstract void dispenseCoins(int count);
        
-
+        public void printCoin()
+        {
+            Console.WriteLine($" Coin Value: {value}    Coin Quantity: {quantity}");
+        }
 
 
 
