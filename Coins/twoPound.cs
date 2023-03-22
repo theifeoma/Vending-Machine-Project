@@ -3,6 +3,13 @@ namespace VendingMachineProject
 {
 	public class twoPound : Coin
 	{
+        public twoPound()
+        {
+            this.value = 2.0;
+            this.quantity = 2;
+            this.nextCoin = nextCoin;
+        }
+
         public twoPound(double value, int quantity, Coin nextValue)
              : base(value, quantity, nextValue)
         {
@@ -12,7 +19,7 @@ namespace VendingMachineProject
 
         protected override void dispenseCoins(int count)
         {
-            Console.WriteLine($"{count} x £0.10 coin");
+            Console.WriteLine($"{count} x £2.0 coin");
         }
     }
 }

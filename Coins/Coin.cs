@@ -10,10 +10,18 @@ namespace VendingMachineProject
         protected int quantity;
         protected Coin nextCoin;
 
-        public Coin(double name, int quantity, Coin nextCoin)
+        public Coin(double value, int quantity, Coin nextCoin)
         {
-            this.value = 0.1;
-            this.quantity = 10;
+            this.value = value;
+            this.quantity = quantity;
+            this.nextCoin = nextCoin;
+        }
+
+        public Coin()
+        {
+            this.value = value;
+            this.quantity = quantity;
+            this.nextCoin = nextCoin;
         }
 
 
@@ -46,6 +54,7 @@ namespace VendingMachineProject
         }
 
 
+
         //method to dispense change using recuresion
         public void Dispense(double amount)
         {
@@ -66,7 +75,10 @@ namespace VendingMachineProject
         //abstract method implemented by other classes for the dispense function
         protected abstract void dispenseCoins(int count);
        
-
+        public void printCoin()
+        {
+            Console.WriteLine($" Coin Value: {value}    Coin Quantity: {quantity}");
+        }
 
 
 
