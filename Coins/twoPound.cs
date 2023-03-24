@@ -12,13 +12,13 @@ namespace VendingMachineProject
 
         protected override void dispenseCoins(int count)
         {
-            //Console.WriteLine($"{count} x £{value} coin");
+           
 
+            //if current count of what we need is higher than quantity of coins we have
             if (quantity < count)
             {
                 int dispensedCoins = quantity;
                 Console.WriteLine($"Dispensed {dispensedCoins} coin(s) of {value} cents");
-                //Console.WriteLine($"Remaining change: {Math.Round((count - dispensedCoins) * value, 4)}");
                 quantity = 0;
                 double remainingCoins = Math.Round((count - dispensedCoins) * value, 4);
                 if (nextCoin != null)
@@ -26,11 +26,11 @@ namespace VendingMachineProject
                     nextCoin.Dispense(remainingCoins);
                 }
             }
+            //continue as needed
             else
             {
                 quantity -= count;
                 Console.WriteLine($"Dispensed {count} coin(s) of {value} cents");
-                //Console.WriteLine($"Remaining change: {Math.Round(amount - (value * count), 4)}");
             }
         }
     }
