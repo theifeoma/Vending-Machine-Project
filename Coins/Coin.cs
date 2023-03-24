@@ -56,6 +56,14 @@ namespace VendingMachineProject
             this.nextCoin = coin;
         }
 
+        //abstract method implemented by other classes for the dispense function
+        protected abstract void dispenseCoins(int count);
+
+
+        public override string ToString()
+        {
+            return $"Coin: value={value}, count={quantity}";
+        }
 
         public void PrintCoins()
         {
@@ -79,11 +87,6 @@ namespace VendingMachineProject
                 currentCoin = currentCoin.nextCoin;
             }
             return total;
-        }
-
-        public override string ToString()
-        {
-            return $"Coin: value={value}, count={quantity}";
         }
 
 
@@ -232,10 +235,6 @@ namespace VendingMachineProject
                 }
             }
         }
-
-
-        //abstract method implemented by other classes for the dispense function
-        protected abstract void dispenseCoins(int count);
        
         public void printCoin()
         {
