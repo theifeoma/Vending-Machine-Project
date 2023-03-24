@@ -1,27 +1,27 @@
 ﻿using System;
 namespace VendingMachineProject
 {
-	public class Snacks
+	public abstract class Snack
 	{
-		private string snackName;
-		private int snackQuantity;
-        private double snackPrice;
+		protected string snackName;
+		protected int snackQuantity;
+        protected double snackPrice;
 
-		public Snacks(string snackName, double snackPrice, int snackQuantity)
+		public Snack(string snackName, double snackPrice, int snackQuantity)
 		{
 			this.snackName = snackName;
 			this.snackQuantity = snackQuantity;
 			this.snackPrice = snackPrice;
 		}
 
-        public Snacks()
+        public Snack()
         {
             this.snackName = snackName;
             this.snackQuantity = snackQuantity;
             this.snackPrice = snackPrice;
         }
 
-        public Snacks(string snackName)
+        public Snack(string snackName)
         {
             this.snackName = snackName;
             this.snackQuantity = snackQuantity;
@@ -63,7 +63,7 @@ namespace VendingMachineProject
                 snackQuantity--;
         }
 
-        public bool SnackCheck(Snacks snacks)
+        public bool SnackCheck(Snack snacks)
         {
             if (snacks.getSnackQuantity() == 0)
             {
@@ -74,7 +74,7 @@ namespace VendingMachineProject
             return false;
         }
 
-        public void changeSnackPrice(Snacks snacks)
+        public void changeSnackPrice(Snack snacks)
         {
 
             Console.WriteLine("");
