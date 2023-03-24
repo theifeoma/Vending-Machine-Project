@@ -1,14 +1,22 @@
 ﻿using System;
+using static System.Formats.Asn1.AsnWriter;
+
 namespace VendingMachineProject
 {
 	public static class Input
 	{
-        public static bool AskForInput(Snacks snack)
+        public static bool AskForInput(Snack snack, Coin coin)
         {
             List<double> inputList = new List<double>();
-            //Coin dummy = new Coin();
+
             double price = snack.getSnackPrice();
-            //Snacks snackk = new Snacks();
+
+            Coin one = coin.getNextCoin();
+            Coin fifty = one.getNextCoin();
+            Coin twenty = fifty.getNextCoin();
+            Coin ten = twenty.getNextCoin();
+            Coin five = ten.getNextCoin();
+            five.SetNextCoin(null);
 
             if (snack.getSnackQuantity() == 0)
             {
@@ -21,11 +29,7 @@ namespace VendingMachineProject
 
                 while (IsSumLowerThanPrice(inputList, price))
             {
-                //snack.SnackCheck(snack);
 
-                
-
-                
                     Console.Write("Please enter coins that total to less than £10: ");
 
                     double coinsToAdd = Convert.ToDouble(Console.ReadLine());
@@ -43,29 +47,114 @@ namespace VendingMachineProject
                             Console.WriteLine("Coin will not be added, {0} is greater than 10", coinsToAdd + inputList.Sum());
                         }
 
-                        //else
-                        //{
-                        //    //coin input from user
-                        //    inputList.Add(coinsToAdd);
+                        else
+                        {
 
-                        //    //updates the coin added to the coinPool
-                        //    dummy.UpdateInventory(coinsToAdd, 1);
-
-                        //    //reduce snack quantity
-                        //    snack.reduceSnackQuantity();
-
-                        //    //change to be dispensed
-                        //    double change = dummy.ChangeChecker(inputList, snack);
-                        //    //Console.WriteLine(change);
+                            //coin input from user
+                            inputList.Add(coinsToAdd);
 
 
-                        //    dummy.ChangeToGive(change);
+                            //update inventory with input from customer
+                            //input == 2
+                            if (coin.getCoinValue() == coinsToAdd)
+                            {
+                                //update inventory
+                                coin.UpdateInventory(2.0, 1);
+      
+                                //double change = coin.ChangeChecker(inputList, snack);
+                                //all coin methods should be done in these closures
+                            }
+                            //input ==1
+                            else if (one.getCoinValue() == coinsToAdd)
+                            {
+                                //update invententory
+                                one.UpdateInventory(1.0, 1);
 
-                        //    //test for if coin is decrementing and incrementing
-                        //    dummy.Print();
+                                //change to be dispensed
+                                //double change = one.ChangeChecker(inputList, snack);
+                            }
 
-                        //}
+                            else if (fifty.getCoinValue() == coinsToAdd)
+                            {
+                                //update invententory
+                                fifty.UpdateInventory(0.5, 1);
+
+                                //change to be dispensed
+                                //double change = fifty.ChangeChecker(inputList, snack);
+                            }
+
+                            else if (twenty.getCoinValue() == coinsToAdd)
+                            {
+                                //update invententory
+                                twenty.UpdateInventory(0.2, 1);
+                                //change to be dispensed
+                                //double change = twenty.ChangeChecker(inputList, snack);
+                            }
+
+                            else if (ten.getCoinValue() == coinsToAdd)
+                            {
+                                //update invententory
+                                ten.UpdateInventory(0.1, 1);
+
+                                //change to be dispensed
+                               // double change = ten.ChangeChecker(inputList, snack);
+                            }
+
+                            else if (five.getCoinValue() == coinsToAdd)
+                            {
+                                //update invententory
+                                five.UpdateInventory(0.05, 1);
+
+                                //change to be dispensed
+                                //double change = five.ChangeChecker(inputList, snack);
+                            }
+
+                            coin.PrintCoins();
+
+                            //if get value == coin denomination
+                            //then dispense or add to pool
+
+                            //change to be dispensed after purchasing
+                            double changeToGiv = Math.Round(coin.ChangeChecker(inputList, snack), 4);
+
+
+
+                            //change list
+                            Console.WriteLine($"Your change is: {changeToGiv}");
+                            Console.WriteLine();
+
+                            //condition to check if we have enough coins for change
+                            if (coin.successfulCoinTransaction(changeToGiv))
+                            {
+                                    coin.Dispense(changeToGiv);
+
+                                    //reduce snack quantity
+                                    snack.reduceSnackQuantity();
+                            }
+                            else
+                            {
+                                Console.WriteLine("We can not process your order as machine is out of change");
+
+                                //return coin added in inputList
+                                coin.removeFromCoinInventory(inputList, coin);
+                                Console.WriteLine($"Here is your money");
+
+                                //print out money to give back to customer
+                                foreach (double inputCoin in inputList)
+                                {
+                                    Console.Write($"£{inputCoin},");
+                                }
+                            }
+
+
+                            //test for if coin is decrementing and incrementing
+                            Console.WriteLine();
+
+                            coin.PrintCoins();
+
+                        }
                     }
+
                     else
                     {
                         Console.WriteLine("Invalid Coin:");
@@ -103,10 +192,6 @@ namespace VendingMachineProject
             }
             
         }
-
-
-
-        
     }
 }
 

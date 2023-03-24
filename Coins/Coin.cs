@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Threading.Channels;
 
@@ -6,9 +7,10 @@ namespace VendingMachineProject
 {
 	public abstract class Coin
 	{
-        protected double value;//coin name
+        protected double value; //coin name
         protected int quantity;
         protected Coin nextCoin;
+        protected Dictionary<double, int> inventory;
 
         public Coin(double value, int quantity, Coin nextCoin)
         {
@@ -16,14 +18,6 @@ namespace VendingMachineProject
             this.quantity = quantity;
             this.nextCoin = nextCoin;
         }
-
-        public Coin()
-        {
-            this.value = value;
-            this.quantity = quantity;
-            this.nextCoin = nextCoin;
-        }
-
 
         //getters and setters
         public void setCoinValue(double value)
@@ -41,9 +35,19 @@ namespace VendingMachineProject
             this.quantity = quantity;
         }
 
-        public double getCoinQuantity()
+        public int getCoinQuantity()
         {
             return quantity;
+        }
+
+        private double getCoinQuantity(double coinValue)
+        {
+            return quantity;
+        }
+
+        private void setCoinQuantity(double coinValue, double v)
+        {
+            this.quantity = (int)(coinValue + v);
         }
 
 
@@ -53,36 +57,395 @@ namespace VendingMachineProject
             this.nextCoin = coin;
         }
 
-
-
-        //method to dispense change using recuresion
-        public void Dispense(double amount)
+        public void PrintCoins()
         {
-            int count = (int)(amount / value);
-            double remainder = amount % value;
-
-            if (count > 0)
+            Coin currentCoin = this;
+            while (currentCoin != null)
             {
-                dispenseCoins(count);
-            }
-
-            if (remainder > 0 && nextCoin != null)
-            {
-                nextCoin.Dispense(remainder);
+                Console.WriteLine(currentCoin.ToString());
+                currentCoin = currentCoin.getNextCoin();
             }
         }
+
+        public double GetTotalValue()
+        {
+            double total = 0;
+            Coin currentCoin = this;
+            while (currentCoin != null)
+            {
+                total += currentCoin.value * currentCoin.quantity;
+                currentCoin = currentCoin.nextCoin;
+            }
+            return total;
+        }
+
+        public override string ToString()
+        {
+            return $"Coin: value={value}, count={quantity}";
+        }
+
+
+        //to check if we can accept transaction 
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double totalValue = value * quantity;
+        //    if (totalValue < amount)
+        //    {
+        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available");
+        //        return false;
+        //    }
+        //    return true;
+        //}
+
+
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double totalValue = 0;
+        //    Coin currentCoin = this;
+
+        //    // Iterate through all coins in the machine to calculate total value
+        //    while (currentCoin != null)
+        //    {
+        //        totalValue += currentCoin.value * currentCoin.quantity;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+        //    if (totalValue < amount)
+        //    {
+        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available");
+        //        return false;
+        //    }
+        //    return true;
+        //}
+
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double remainingChange = amount;
+        //    Coin currentCoin = this;
+
+        //    while (currentCoin != null)
+        //    {
+        //        double coinValue = currentCoin.getCoinValue();
+        //        int coinQuantity = currentCoin.getCoinQuantity();
+
+        //        if (coinQuantity == 0 || remainingChange < coinValue * coinQuantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins available");
+        //            return false;
+        //        }
+
+        //        remainingChange -= coinValue * coinQuantity;
+        //        currentCoin = currentCoin.getNextCoin();
+        //    }
+
+        //    return true;
+        //}
+
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double remainingAmount = amount;
+        //    Coin currentCoin = this;
+
+        //    while (remainingAmount > 0 && currentCoin != null)
+        //    {
+        //        int count = (int)(remainingAmount / currentCoin.value);
+
+        //        if (count > currentCoin.quantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
+        //            return false;
+        //        }
+
+        //        remainingAmount -= count * currentCoin.value;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+        //    if (remainingAmount > 0 && currentCoin == null)
+        //    {
+        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+        //        return false;
+        //    }
+
+        //    if (remainingAmount <= 0)
+        //    {
+        //        //Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+        //        return true;
+        //    }
+
+
+        //    return true;
+        //}
+
+        public bool successfulCoinTransaction(double amount)
+        {
+            double remainingAmount = amount;
+            Coin currentCoin = this;
+
+            while (remainingAmount > 0 && currentCoin != null)
+            {
+                int count = (int)(remainingAmount / currentCoin.value);
+
+                if (count > currentCoin.quantity)
+                {
+                    Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
+                    return false;
+                }
+
+                remainingAmount -= count * currentCoin.value;
+                currentCoin = currentCoin.nextCoin;
+            }
+
+            if (remainingAmount > 0 && currentCoin == null)
+            {
+                Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+                return false;
+            }
+
+            // check if the coin dispenser has enough coins to dispense the change
+            currentCoin = this;
+            double changeAmount = amount - remainingAmount;
+            while (changeAmount > 0 && currentCoin != null)
+            {
+                int count = (int)(changeAmount / currentCoin.value);
+
+                if (count > currentCoin.quantity)
+                {
+                    Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available to dispense the change.");
+                    return false;
+                }
+
+                changeAmount -= count * currentCoin.value;
+                currentCoin = currentCoin.nextCoin;
+            }
+
+            if (remainingAmount <= 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+
+        public void Dispense(double amount)
+        {
+            {
+                int count = (int)(amount / value);
+                double remainder = Math.Round(amount % value, 4);
+
+                //check if we have enough coins
+                //if (successfulCoinTransaction(amount))
+                {
+                    //if coin to dispense quantity is zero call the next coin down
+                    if (quantity == 0 && nextCoin != null)
+                    {
+                        nextCoin.Dispense(amount);
+                    }
+
+                    //if coin can be used as change
+                    else if (count > 0 && quantity != 0)
+                    {
+                        dispenseCoins(count);
+
+                        //if coin can be used as change but we run out of current coin, call next coin
+                        if (amount > 0 && nextCoin != null)
+                        {
+                            nextCoin.Dispense(remainder);
+                        }
+                    }
+
+                    //if change is remaining call next coin
+                    else if (remainder >= 0 && nextCoin != null)
+                    {
+                        nextCoin.Dispense(remainder);
+                    }
+                }     
+
+            }
+            
+        }
+
+
+        //removes from coininventory and return coins added
+        public void removeFromCoinInventory(List<double> changeCoins, Coin head)
+        {
+
+            foreach (double coins in changeCoins)
+            {
+
+                Coin coin = head;
+
+                while (coin != null)
+                {
+                    //check if current coin is a coin
+                    if (coin.getCoinValue() == coins)
+                    {
+                        int currentQuantity = coin.getCoinQuantity();
+
+                        coin.setCoinQuantity(currentQuantity - 1);
+                        
+                    }
+
+                    coin = coin.getNextCoin();
+
+                }
+            }
+        }
+
 
         //abstract method implemented by other classes for the dispense function
         protected abstract void dispenseCoins(int count);
        
         public void printCoin()
         {
-            Console.WriteLine($" Coin Value: {value}    Coin Quantity: {quantity}");
+            Console.WriteLine($" Coin Value: {value}  Coin Quantity: {quantity}");
+        }
+
+        public Coin getNextCoin()
+        {
+            return nextCoin;
+        }
+
+        //add coin to coin pool
+        public bool UpdateInventory(double key, int quantity)
+        {
+            Coin currentCoin = this;
+
+            while (currentCoin != null)
+            {
+                if (currentCoin.getCoinValue() == key)
+                {
+                    int currentQuantity = currentCoin.getCoinQuantity();
+                    currentCoin.setCoinQuantity(currentQuantity + quantity);
+                    return true;
+                }
+                currentCoin = currentCoin.getNextCoin();
+            }
+
+            return false;
+        }
+
+        //check for difference between sum of snack price and total amount in coin input list to return change amount 
+        public double ChangeChecker(List<double> input, Snack snack)
+        {
+            //if statement to check if equal to
+
+            double total = input.Sum();
+
+            double change = total - snack.getSnackPrice();
+
+            return change;
         }
 
 
+        //method that gives change
+        //public void ChangeToGive(double change)
+        //{
+        //    Coin coins = this;
+
+        //    List<double> changeCoins = new List<double>();
+        //    double[] coinsss = { 2.0, 1.0, 0.5, 0.2, 0.1, 0.05 };
+
+        //    //meant to be the reduced change as the program progresses.
+        //    //without actually touching the actual change so that
+        //    //change can be used as a parameter
+        //    decimal changeHolder = Convert.ToDecimal(change);
+
+        //    while (changeHolder > 0)
+        //    {
+        //        //double closest = coinsss[0];
+
+        //        List<double> coinsLessThanCoinList = new List<double>();
+
+        //        foreach (double coin in coinsss)
+        //        {
+        //            //put all values less than coin in a list
+        //            //if current coin needed is 0 use the next possible coins
+        //            if (coin <= Convert.ToDouble(changeHolder))
+        //            {
+        //                //check if coin is zero before adding to list
+        //                //if it is remove coin from array and use the next coin
+        //                coinsLessThanCoinList.Add(coin);
+        //            }
+        //        }
 
 
+
+
+
+        //        //assign the first variable as the change
+        //        decimal actualChange = Convert.ToDecimal(coinsLessThanCoinList[0]);
+
+        //        //add the first variable to list of change
+        //        //if coin we need is not available then write error
+
+        //        changeCoins.Add(Convert.ToDouble(actualChange));
+
+        //        //minus [0] from change to update change
+        //        changeHolder -= actualChange;
+
+        //    }
+
+
+        //    //remove coin from pool when change is complete
+        //    removeFromCoinInventory(changeCoins, coins);
+
+
+        //    //print change
+        //    foreach (double number in changeCoins)
+        //    {
+        //        Console.WriteLine(number);
+        //    }
+
+        //    //check if coin is in coin pool if not use next available coin
+
+            
+
+        //}
+
+        
+
+
+        
+
+
+        //check if coin quantity is zero
+        //public bool checkIfCoinIsZero(List<double> changePool)
+        //{
+        //    Coin coin = this;
+
+
+        //    //loops through change pool to give
+        //    foreach (double coins in changePool)
+        //    {
+
+        //        //checks that the coin in the change pool is not null
+        //        while (coin != null)
+        //        {
+        //            if (coin.getCoinValue() == coins && coin.getCoinQuantity() == 0)
+        //            {
+        //                return true;
+
+        //                //Console.WriteLine($"The coin {coin}  has a quantity of 0.");
+
+        //            }
+
+        //            //to see if coin is avaialble for change
+        //            else
+        //            {
+        //                return false;
+        //                // Console.WriteLine("There's Coin");
+        //            }
+
+        //            coin = coin.getNextCoin();
+        //        }
+
+        //    }
+
+        //    return false;
+        //}
 
 
 
