@@ -8,7 +8,7 @@ public class Program
     static void Main(string[] args)
     {
 
-        Coin coins = new twoPound(2.0, 2, new onePound(1.0, 0, new fiftyPence(0.5, 1, new twentyPence(0.2, 1, new tenPence(0.1, 0, new fivePence(0.05, 1, null))))));
+        Coin coins = new twoPound(2.0, 2, new onePound(1.0, 0, new fiftyPence(0.5, 5, new twentyPence(0.2, 5, new tenPence(0.1, 10, new fivePence(0.05, 0, null))))));
 
         Snack[] snacks = new Snack[5];
         cola Cola = new cola("Cola", 1.50, 10);

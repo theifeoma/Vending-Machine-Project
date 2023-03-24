@@ -176,6 +176,56 @@ namespace VendingMachineProject
         //    return true;
         //}
 
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double remainingAmount = amount;
+        //    Coin currentCoin = this;
+
+        //    while (remainingAmount > 0 && currentCoin != null)
+        //    {
+        //        int count = (int)(remainingAmount / currentCoin.value);
+
+        //        if (count > currentCoin.quantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
+        //            return false;
+        //        }
+
+        //        remainingAmount -= count * currentCoin.value;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+        //    if (remainingAmount > 0 && currentCoin == null)
+        //    {
+        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+        //        return false;
+        //    }
+
+        //    // check if the coin dispenser has enough coins to dispense the change
+        //    currentCoin = this;
+        //    double changeAmount = amount - remainingAmount;
+        //    while (changeAmount > 0 && currentCoin != null)
+        //    {
+        //        int count = (int)(changeAmount / currentCoin.value);
+
+        //        if (count > currentCoin.quantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available to dispense the change.");
+        //            return false;
+        //        }
+
+        //        changeAmount -= count * currentCoin.value;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+        //    if (remainingAmount <= 0)
+        //    {
+        //        return true;
+        //    }
+
+        //    return true;
+        //}
+
         public bool successfulCoinTransaction(double amount)
         {
             double remainingAmount = amount;
@@ -195,11 +245,11 @@ namespace VendingMachineProject
                 currentCoin = currentCoin.nextCoin;
             }
 
-            if (remainingAmount > 0 && currentCoin == null)
-            {
-                Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-                return false;
-            }
+            //if (remainingAmount > 0 && currentCoin == null)
+            //{
+            //    Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+            //    return false;
+            //}
 
             // check if the coin dispenser has enough coins to dispense the change
             currentCoin = this;
@@ -218,13 +268,15 @@ namespace VendingMachineProject
                 currentCoin = currentCoin.nextCoin;
             }
 
-            if (remainingAmount <= 0)
-            {
-                return true;
-            }
+            //if (changeAmount > 0)
+            //{
+            //    Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
+            //    return false;
+            //}
 
-            return false;
+            return true;
         }
+
 
 
 
