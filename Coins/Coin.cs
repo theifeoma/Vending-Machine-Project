@@ -10,7 +10,6 @@ namespace VendingMachineProject
         protected double value; //coin name
         protected int quantity;
         protected Coin nextCoin;
-        protected Dictionary<double, int> inventory;
 
         public Coin(double value, int quantity, Coin nextCoin)
         {
@@ -57,6 +56,7 @@ namespace VendingMachineProject
             this.nextCoin = coin;
         }
 
+
         public void PrintCoins()
         {
             Coin currentCoin = this;
@@ -67,6 +67,8 @@ namespace VendingMachineProject
             }
         }
 
+
+        //get value of total coins in system
         public double GetTotalValue()
         {
             double total = 0;
@@ -176,7 +178,7 @@ namespace VendingMachineProject
             double remainder = Math.Round(amount % value, 4);
 
             // check if we have enough coins
-            if (successfulCoinTransaction(amount))
+            //if (successfulCoinTransaction(amount))
             {
                 // if coin to dispense quantity is zero call the next coin down
                 if (quantity == 0 && nextCoin != null)
@@ -190,20 +192,19 @@ namespace VendingMachineProject
                     dispenseCoins(count);
 
                     // if coin can be used as change but we run out of current coin, call next coin
-                    if (amount > 0 && nextCoin != null)
+                    if (remainder > 0 && nextCoin != null)
                     {
                         nextCoin.Dispense(remainder);
                     }
                 }
 
                 // if change is remaining call next coin
-                else if (remainder > 0 && nextCoin != null)
+                else if (remainder >= 0 && nextCoin != null)
                 {
                     nextCoin.Dispense(remainder);
                 }
             }
         }
-
 
 
         //removes from coininventory and return coins added
