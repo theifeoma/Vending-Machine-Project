@@ -55,58 +55,42 @@ namespace VendingMachineProject
 
 
                             //update inventory with input from customer
+
                             //input == 2
                             if (coin.getCoinValue() == coinsToAdd)
                             {
                                 //update inventory
                                 coin.UpdateInventory(2.0, 1);
-      
-                                //double change = coin.ChangeChecker(inputList, snack);
-                                //all coin methods should be done in these closures
                             }
                             //input ==1
                             else if (one.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 one.UpdateInventory(1.0, 1);
-
-                                //change to be dispensed
-                                //double change = one.ChangeChecker(inputList, snack);
                             }
 
                             else if (fifty.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 fifty.UpdateInventory(0.5, 1);
-
-                                //change to be dispensed
-                                //double change = fifty.ChangeChecker(inputList, snack);
                             }
 
                             else if (twenty.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 twenty.UpdateInventory(0.2, 1);
-                                //change to be dispensed
-                                //double change = twenty.ChangeChecker(inputList, snack);
                             }
 
                             else if (ten.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 ten.UpdateInventory(0.1, 1);
-
-                                //change to be dispensed
-                               // double change = ten.ChangeChecker(inputList, snack);
                             }
 
                             else if (five.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 five.UpdateInventory(0.05, 1);
-
-                                //change to be dispensed
-                                //double change = five.ChangeChecker(inputList, snack);
                             }
 
                             coin.PrintCoins();
@@ -119,7 +103,7 @@ namespace VendingMachineProject
 
 
 
-                            //change list
+                            //change output at every input
                             Console.WriteLine($"Your change is: {changeToGiv}");
                             Console.WriteLine();
 
@@ -166,6 +150,7 @@ namespace VendingMachineProject
         }
 
         //boolean to check if sum of input is greater than 10
+        //need to change this to sum of money in pool
         private static bool IsGreaterThan10(double numberToAdd, List<double> inputList)
         {
             return numberToAdd + inputList.Sum() > 10;
