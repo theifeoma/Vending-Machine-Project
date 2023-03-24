@@ -92,6 +92,47 @@ namespace VendingMachineProject
 
         //to check if we can accept transaction
         //this works to keep thrack of coins to dispense if it is more than one coin value
+        //public bool successfulCoinTransaction(double amount)
+        //{
+        //    double remainingAmount = amount;
+        //    Coin currentCoin = this;
+
+        //    while (remainingAmount > 0 && currentCoin != null)
+        //    {
+        //        int count = (int)(remainingAmount / currentCoin.value);
+
+        //        if (count > currentCoin.quantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
+        //            return false;
+        //        }
+
+        //        remainingAmount -= count * currentCoin.value;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+
+        //    // check if the coin dispenser has enough coins to dispense the change
+        //    currentCoin = this;
+        //    double changeAmount = amount - remainingAmount;
+        //    while (changeAmount > 0 && currentCoin != null)
+        //    {
+        //        int count = (int)(changeAmount / currentCoin.value);
+
+        //        if (count > currentCoin.quantity)
+        //        {
+        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available to dispense the change.");
+        //            return false;
+        //        }
+
+        //        changeAmount -= count * currentCoin.value;
+        //        currentCoin = currentCoin.nextCoin;
+        //    }
+
+        //    return true;
+        //}
+
+
         public bool successfulCoinTransaction(double amount)
         {
             double remainingAmount = amount;
@@ -103,14 +144,18 @@ namespace VendingMachineProject
 
                 if (count > currentCoin.quantity)
                 {
-                    Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
+                    Console.WriteLine($"Not enough coins of £{currentCoin.value} available, checking other available coins2");
+                    if (currentCoin.nextCoin != null && currentCoin.nextCoin.successfulCoinTransaction(remainingAmount - currentCoin.quantity * currentCoin.value))
+                    {
+                        // if the next coin can perform the transaction, continue with the next coin
+                        return true;
+                    }
                     return false;
                 }
 
                 remainingAmount -= count * currentCoin.value;
                 currentCoin = currentCoin.nextCoin;
             }
-
 
             // check if the coin dispenser has enough coins to dispense the change
             currentCoin = this;
