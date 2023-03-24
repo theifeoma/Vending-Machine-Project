@@ -85,147 +85,8 @@ namespace VendingMachineProject
         }
 
 
-        //to check if we can accept transaction 
-        //public bool successfulCoinTransaction(double amount)
-        //{
-        //    double totalValue = value * quantity;
-        //    if (totalValue < amount)
-        //    {
-        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-
-        //public bool successfulCoinTransaction(double amount)
-        //{
-        //    double totalValue = 0;
-        //    Coin currentCoin = this;
-
-        //    // Iterate through all coins in the machine to calculate total value
-        //    while (currentCoin != null)
-        //    {
-        //        totalValue += currentCoin.value * currentCoin.quantity;
-        //        currentCoin = currentCoin.nextCoin;
-        //    }
-
-        //    if (totalValue < amount)
-        //    {
-        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-        //public bool successfulCoinTransaction(double amount)
-        //{
-        //    double remainingChange = amount;
-        //    Coin currentCoin = this;
-
-        //    while (currentCoin != null)
-        //    {
-        //        double coinValue = currentCoin.getCoinValue();
-        //        int coinQuantity = currentCoin.getCoinQuantity();
-
-        //        if (coinQuantity == 0 || remainingChange < coinValue * coinQuantity)
-        //        {
-        //            Console.WriteLine($"Cannot perform transaction. Not enough coins available");
-        //            return false;
-        //        }
-
-        //        remainingChange -= coinValue * coinQuantity;
-        //        currentCoin = currentCoin.getNextCoin();
-        //    }
-
-        //    return true;
-        //}
-
-        //public bool successfulCoinTransaction(double amount)
-        //{
-        //    double remainingAmount = amount;
-        //    Coin currentCoin = this;
-
-        //    while (remainingAmount > 0 && currentCoin != null)
-        //    {
-        //        int count = (int)(remainingAmount / currentCoin.value);
-
-        //        if (count > currentCoin.quantity)
-        //        {
-        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
-        //            return false;
-        //        }
-
-        //        remainingAmount -= count * currentCoin.value;
-        //        currentCoin = currentCoin.nextCoin;
-        //    }
-
-        //    if (remainingAmount > 0 && currentCoin == null)
-        //    {
-        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-        //        return false;
-        //    }
-
-        //    if (remainingAmount <= 0)
-        //    {
-        //        //Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-        //        return true;
-        //    }
-
-
-        //    return true;
-        //}
-
-        //public bool successfulCoinTransaction(double amount)
-        //{
-        //    double remainingAmount = amount;
-        //    Coin currentCoin = this;
-
-        //    while (remainingAmount > 0 && currentCoin != null)
-        //    {
-        //        int count = (int)(remainingAmount / currentCoin.value);
-
-        //        if (count > currentCoin.quantity)
-        //        {
-        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available.");
-        //            return false;
-        //        }
-
-        //        remainingAmount -= count * currentCoin.value;
-        //        currentCoin = currentCoin.nextCoin;
-        //    }
-
-        //    if (remainingAmount > 0 && currentCoin == null)
-        //    {
-        //        Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-        //        return false;
-        //    }
-
-        //    // check if the coin dispenser has enough coins to dispense the change
-        //    currentCoin = this;
-        //    double changeAmount = amount - remainingAmount;
-        //    while (changeAmount > 0 && currentCoin != null)
-        //    {
-        //        int count = (int)(changeAmount / currentCoin.value);
-
-        //        if (count > currentCoin.quantity)
-        //        {
-        //            Console.WriteLine($"Cannot perform transaction. Not enough coins of £{currentCoin.value} available to dispense the change.");
-        //            return false;
-        //        }
-
-        //        changeAmount -= count * currentCoin.value;
-        //        currentCoin = currentCoin.nextCoin;
-        //    }
-
-        //    if (remainingAmount <= 0)
-        //    {
-        //        return true;
-        //    }
-
-        //    return true;
-        //}
-
+        //to check if we can accept transaction
+        //this works to keep thrack of coins to dispense if it is more than one coin value
         public bool successfulCoinTransaction(double amount)
         {
             double remainingAmount = amount;
@@ -245,11 +106,6 @@ namespace VendingMachineProject
                 currentCoin = currentCoin.nextCoin;
             }
 
-            //if (remainingAmount > 0 && currentCoin == null)
-            //{
-            //    Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-            //    return false;
-            //}
 
             // check if the coin dispenser has enough coins to dispense the change
             currentCoin = this;
@@ -268,12 +124,6 @@ namespace VendingMachineProject
                 currentCoin = currentCoin.nextCoin;
             }
 
-            //if (changeAmount > 0)
-            //{
-            //    Console.WriteLine($"Cannot perform transaction. Not enough coins available to dispense the change.");
-            //    return false;
-            //}
-
             return true;
         }
 
@@ -281,43 +131,79 @@ namespace VendingMachineProject
 
 
 
+        //public void Dispense(double amount)
+        //{
+        //    {
+        //        int count = (int)(amount / value);
+        //        double remainder = Math.Round(amount % value, 4);
+
+        //        //check if we have enough coins
+        //        if (successfulCoinTransaction(amount))
+        //        {
+        //            //if coin to dispense quantity is zero call the next coin down
+        //            if (quantity == 0 && nextCoin != null)
+        //            {
+        //                nextCoin.Dispense(amount);
+        //            }
+
+        //            //if coin can be used as change
+        //            else if (count > 0 && quantity != 0)
+        //            {
+        //                dispenseCoins(count);
+
+        //                //if coin can be used as change but we run out of current coin, call next coin
+        //                if (amount > 0 && nextCoin != null)
+        //                {
+        //                    nextCoin.Dispense(remainder);
+        //                }
+        //            }
+
+        //            //if change is remaining call next coin
+        //            else if (remainder >= 0 && nextCoin != null)
+        //            {
+        //                nextCoin.Dispense(remainder);
+        //            }
+        //        }     
+
+        //    }
+
+        //}
+
+
         public void Dispense(double amount)
         {
+            int count = (int)(amount / value);
+            double remainder = Math.Round(amount % value, 4);
+
+            // check if we have enough coins
+            if (successfulCoinTransaction(amount))
             {
-                int count = (int)(amount / value);
-                double remainder = Math.Round(amount % value, 4);
-
-                //check if we have enough coins
-                //if (successfulCoinTransaction(amount))
+                // if coin to dispense quantity is zero call the next coin down
+                if (quantity == 0 && nextCoin != null)
                 {
-                    //if coin to dispense quantity is zero call the next coin down
-                    if (quantity == 0 && nextCoin != null)
-                    {
-                        nextCoin.Dispense(amount);
-                    }
+                    nextCoin.Dispense(amount);
+                }
 
-                    //if coin can be used as change
-                    else if (count > 0 && quantity != 0)
-                    {
-                        dispenseCoins(count);
+                // if coin can be used as change
+                else if (count > 0 && quantity != 0)
+                {
+                    dispenseCoins(count);
 
-                        //if coin can be used as change but we run out of current coin, call next coin
-                        if (amount > 0 && nextCoin != null)
-                        {
-                            nextCoin.Dispense(remainder);
-                        }
-                    }
-
-                    //if change is remaining call next coin
-                    else if (remainder >= 0 && nextCoin != null)
+                    // if coin can be used as change but we run out of current coin, call next coin
+                    if (amount > 0 && nextCoin != null)
                     {
                         nextCoin.Dispense(remainder);
                     }
-                }     
+                }
 
+                // if change is remaining call next coin
+                else if (remainder > 0 && nextCoin != null)
+                {
+                    nextCoin.Dispense(remainder);
+                }
             }
-            
         }
+
 
 
         //removes from coininventory and return coins added
