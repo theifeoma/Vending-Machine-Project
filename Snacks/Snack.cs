@@ -1,7 +1,7 @@
 ﻿using System;
 namespace VendingMachineProject
 {
-	public abstract class Snack
+	public class Snack
 	{
 		protected string snackName;
 		protected int snackQuantity;
