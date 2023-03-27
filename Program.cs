@@ -117,6 +117,7 @@ public class Program
                                             Console.WriteLine("What would be the new price? ");
                                             double newPrice = Convert.ToDouble(Console.ReadLine());
 
+                                            //check if this reflects with the change and finished coins
                                             foreach(Snack sna in snacks)
                                             {
                                             
@@ -149,7 +150,7 @@ public class Program
                                             }
                                             else
                                             {
-                                                Console.WriteLine("Unable To Update. Invalid Coin Type.");
+                                                Console.WriteLine("Unable To Update. Invalid Coin Value.");
                                             }
 
                                             break;
