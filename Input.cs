@@ -99,6 +99,7 @@ namespace VendingMachineProject
                             }
 
                             coin.PrintCoins();
+                            Console.WriteLine();
 
                             //change to be dispensed after purchasing
                             double changeToGiv = Math.Round(coin.ChangeChecker(inputList, snack), 4);
@@ -117,7 +118,10 @@ namespace VendingMachineProject
                                     coin.Dispense(changeToGiv);
 
                                     //reduce snack quantity
+                                    Console.WriteLine();
+                                    Console.WriteLine($"Here is your Snack: {snack.getSnackName()}");
                                     snack.reduceSnackQuantity();
+                                    
                             }
                             else
                             {
