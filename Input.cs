@@ -39,7 +39,7 @@ namespace VendingMachineProject
 
                     if (CoinCheck(coinsToAdd))
                     {
-                        //change to check from 10 to total value in pool inventory
+                        //input is greater than £10 we do not want to accept user's money
                         if (IsGreaterThan10(coinsToAdd, inputList))
 
                         {
@@ -62,31 +62,36 @@ namespace VendingMachineProject
                                 //update inventory
                                 coin.UpdateInventory(2.0, 1);
                             }
+
                             //input ==1
                             else if (one.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 one.UpdateInventory(1.0, 1);
                             }
-
+                            
+                            //input ==0.5
                             else if (fifty.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 fifty.UpdateInventory(0.5, 1);
                             }
 
+                            //input ==0.2
                             else if (twenty.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 twenty.UpdateInventory(0.2, 1);
                             }
 
+                            //input ==0.1
                             else if (ten.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
                                 ten.UpdateInventory(0.1, 1);
                             }
 
+                            //input ==0.05
                             else if (five.getCoinValue() == coinsToAdd)
                             {
                                 //update invententory
@@ -95,21 +100,20 @@ namespace VendingMachineProject
 
                             coin.PrintCoins();
 
-                            //if get value == coin denomination
-                            //then dispense or add to pool
-
                             //change to be dispensed after purchasing
                             double changeToGiv = Math.Round(coin.ChangeChecker(inputList, snack), 4);
 
 
 
-                            //change output at every input
+                            //change output at every input. Value will be a minus value until user enters moeny equal to or over
+                            //can be commented out
                             Console.WriteLine($"Your change is: {changeToGiv}");
                             Console.WriteLine();
 
-                            //condition to check if we have enough coins for change
+                            //boolean to check if we have enough coins for change
                             if (coin.successfulCoinTransaction(changeToGiv))
                             {
+                                    //dispense coins
                                     coin.Dispense(changeToGiv);
 
                                     //reduce snack quantity
@@ -176,6 +180,64 @@ namespace VendingMachineProject
                 return false;
             }
             
+        }
+
+        public static void increaseChangePool(Coin coins)
+        {
+
+            Console.WriteLine("What coin would you like to increase the change pool of? ");
+            double coinKey = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("How many would of this coin would you like to add? ");
+            int coinAmount = Convert.ToInt32(Console.ReadLine());
+
+            if (Input.CoinCheck(coinKey))
+            {
+                coins.UpdateInventory(coinKey, coinAmount);
+                coins.PrintCoins();
+            }
+            else
+            {
+                Console.WriteLine("Unable To Update. Invalid Coin Value.");
+            }
+        }
+
+        public static void getTotalMoneyInPool(Coin coins)
+        {
+            double total = coins.GetTotalValue();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Current Coins in Machine");
+            Console.WriteLine();
+            Console.WriteLine();
+            coins.PrintCoins();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($"Total value of coins in machine is {total}");
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        public static void ChangeSnackPrice(Snack[] snacks)
+        {
+
+            Console.WriteLine("What snack would you like to increase the price of?");
+            string snackToChange = Console.ReadLine();
+
+            Console.WriteLine("What would be the new price? ");
+            double newPrice = Convert.ToDouble(Console.ReadLine());
+
+            foreach (Snack sna in snacks)
+            {
+                if (sna.getSnackName() == snackToChange)
+                {
+                    sna.setSnackPrice(newPrice);
+                    Console.WriteLine($"Price of {snackToChange} changed to {newPrice}.");
+                    return;
+                }
+
+            }
+            Console.WriteLine("Invalid snack name.");
         }
     }
 }
