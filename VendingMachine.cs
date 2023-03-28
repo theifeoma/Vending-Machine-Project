@@ -22,7 +22,7 @@ namespace VendingMachineProject
             ChocBar = new chocBar("Choc Bar", 1.25, 10);
             Skittles = new skittles("Skittles", 1.70, 8);
             Bikkies = new bikkies("Bikkies", 1.25, 10);
-            Gala = new gala("Gala", 1.35, 4);
+            Gala = new gala("Gala", 1.25, 4);
 
             snacks = new Snack[] { Cola, ChocBar, Skittles, Bikkies, Gala };
         }
@@ -95,7 +95,7 @@ namespace VendingMachineProject
 
                             switch (password)
                             {
-                                case "A5144l":
+                                case "A5144I":
                                     {
                                         Console.WriteLine("##          ADMIN MENU         ##");
                                         Console.WriteLine("#################################");
