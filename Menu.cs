@@ -54,35 +54,35 @@ namespace VendingMachineProject
                 {
                     case 1:
                         {
-                            Input.AskForInput(Cola, coins);
+                            Controller.AskForInput(Cola, coins);
                         }
 
                         break;
 
                     case 2:
                         {
-                            Input.AskForInput(ChocBar, coins);
+                            Controller.AskForInput(ChocBar, coins);
                         }
 
                         break;
 
                     case 3:
                         {
-                            Input.AskForInput(Skittles, coins);
+                            Controller.AskForInput(Skittles, coins);
                         }
 
                         break;
 
                     case 4:
                         {
-                            Input.AskForInput(Bikkies, coins);
+                            Controller.AskForInput(Bikkies, coins);
                         }
 
                         break;
 
                     case 5:
                         {
-                            Input.AskForInput(Gala, coins);
+                            Controller.AskForInput(Gala, coins);
                         }
 
                         break;
@@ -119,19 +119,19 @@ namespace VendingMachineProject
                                         {
                                             case 1:
 
-                                                Input.ChangeSnackPrice(snacks);
+                                                Controller.ChangeSnackPrice(snacks);
 
                                                 break;
 
                                             case 2:
 
-                                                Input.increaseChangePool(coins);
+                                                Controller.increaseChangePool(coins);
 
                                                 break;
 
                                             case 3:
 
-                                                Input.getTotalMoneyInPool(coins);
+                                                Controller.getTotalMoneyInPool(coins);
                                                 break;
 
                                             case 4:

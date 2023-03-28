@@ -4,7 +4,7 @@ using static System.Formats.Asn1.AsnWriter;
 namespace VendingMachineProject
 {
     //controller class for vending machine
-	public static class Input
+	public static class Controller
 	{
         public static bool AskForInput(Snack snack, Coin coin)
         {
@@ -201,7 +201,7 @@ namespace VendingMachineProject
             Console.WriteLine("How many would of this coin would you like to add? ");
             int coinAmount = Convert.ToInt32(Console.ReadLine());
 
-            if (Input.CoinCheck(coinKey))
+            if (Controller.CoinCheck(coinKey))
             {
                 coins.UpdateInventory(coinKey, coinAmount);
                 coins.PrintCoins();
