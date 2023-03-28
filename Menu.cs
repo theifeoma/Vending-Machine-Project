@@ -3,7 +3,7 @@ using VendingMachineProject.Snacks;
 
 namespace VendingMachineProject
 {
-    public class VendingMachine
+    public class Menu
     {
         private Coin coins;
         private Snack[] snacks;
@@ -14,7 +14,7 @@ namespace VendingMachineProject
         private bikkies Bikkies;
         private gala Gala;
 
-        public VendingMachine()
+        public Menu()
         {
             coins = new twoPound(2.0, 2, new onePound(1.0, 3, new fiftyPence(0.5, 4, new twentyPence(0.2, 5, new tenPence(0.1, 10, new fivePence(0.05, 20, null))))));
 
@@ -22,7 +22,7 @@ namespace VendingMachineProject
             ChocBar = new chocBar("Choc Bar", 1.25, 10);
             Skittles = new skittles("Skittles", 1.70, 8);
             Bikkies = new bikkies("Bikkies", 1.25, 10);
-            Gala = new gala("Gala", 1.35, 4);
+            Gala = new gala("Gala", 1.25, 4);
 
             snacks = new Snack[] { Cola, ChocBar, Skittles, Bikkies, Gala };
         }
@@ -54,35 +54,35 @@ namespace VendingMachineProject
                 {
                     case 1:
                         {
-                            Input.AskForInput(Cola, coins);
+                            Controller.PurchaseSnack(Cola, coins);
                         }
 
                         break;
 
                     case 2:
                         {
-                            Input.AskForInput(ChocBar, coins);
+                            Controller.PurchaseSnack(ChocBar, coins);
                         }
 
                         break;
 
                     case 3:
                         {
-                            Input.AskForInput(Skittles, coins);
+                            Controller.PurchaseSnack(Skittles, coins);
                         }
 
                         break;
 
                     case 4:
                         {
-                            Input.AskForInput(Bikkies, coins);
+                            Controller.PurchaseSnack(Bikkies, coins);
                         }
 
                         break;
 
                     case 5:
                         {
-                            Input.AskForInput(Gala, coins);
+                            Controller.PurchaseSnack(Gala, coins);
                         }
 
                         break;
@@ -95,7 +95,7 @@ namespace VendingMachineProject
 
                             switch (password)
                             {
-                                case "A5144l":
+                                case "A5144I":
                                     {
                                         Console.WriteLine("##          ADMIN MENU         ##");
                                         Console.WriteLine("#################################");
@@ -119,19 +119,19 @@ namespace VendingMachineProject
                                         {
                                             case 1:
 
-                                                Input.ChangeSnackPrice(snacks);
+                                                Controller.ChangeSnackPrice(snacks);
 
                                                 break;
 
                                             case 2:
 
-                                                Input.increaseChangePool(coins);
+                                                Controller.increaseChangePool(coins);
 
                                                 break;
 
                                             case 3:
 
-                                                Input.getTotalMoneyInPool(coins);
+                                                Controller.getTotalMoneyInPool(coins);
                                                 break;
 
                                             case 4:

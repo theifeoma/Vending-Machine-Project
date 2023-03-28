@@ -7,9 +7,9 @@ public class Program
 {
     static void Main(string[] args)
     {
-        VendingMachine vm = new VendingMachine();
+        Menu vendingMachine = new Menu();
 
-        vm.Run();
+        vendingMachine.Run();
     }
 
 }
