@@ -154,7 +154,6 @@ namespace VendingMachineProject
 
                             //test for if coin is decrementing and incrementing
                             Console.WriteLine();
-
                             coin.PrintCoins();
 
                         }

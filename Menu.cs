@@ -16,7 +16,7 @@ namespace VendingMachineProject
 
         public Menu()
         {
-            coins = new twoPound(2.0, 2, new onePound(1.0, 3, new fiftyPence(0.5, 4, new twentyPence(0.2, 0, new tenPence(0.1, 2, new fivePence(0.05, 5, null))))));
+            coins = new twoPound(2.0, 2, new onePound(1.0, 3, new fiftyPence(0.5, 4, new twentyPence(0.2, 5, new tenPence(0.1, 10, new fivePence(0.05, 20, null))))));
 
             Cola = new cola("Cola", 1.50, 10);
             ChocBar = new chocBar("Choc Bar", 1.25, 10);

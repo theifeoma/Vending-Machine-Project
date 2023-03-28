@@ -1,23 +1,24 @@
 ﻿<Properties StartupConfiguration="{8BB399D6-5496-4813-8C77-0C862AC44DB8}|Default">
   <MonoDevelop.Ide.ItemProperties.VendingMachineProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controller.cs">
     <Files>
       <File FileName="Coins/tenPence.cs" />
       <File FileName="Coins/onePound.cs" />
-      <File FileName="Coins/Coin.cs" Line="144" Column="13" />
-      <File FileName="Snacks/gala.cs" />
-      <File FileName="Snacks/skittles.cs" />
-      <File FileName="Snacks/bikkies.cs" />
-      <File FileName="Snacks/chocBar.cs" />
-      <File FileName="Coins/twentyPence.cs" />
-      <File FileName="Coins/fivePence.cs" />
-      <File FileName="Coins/fiftyPence.cs" />
-      <File FileName="Coins/twoPound.cs" />
-      <File FileName="Snacks/Snack.cs" Line="69" Column="14" />
+      <File FileName="Coins/Coin.cs" Line="25" Column="10" />
+      <File FileName="Snacks/gala.cs" Line="1" Column="1" />
+      <File FileName="Snacks/skittles.cs" Line="1" Column="1" />
+      <File FileName="Snacks/bikkies.cs" Line="1" Column="1" />
+      <File FileName="Snacks/chocBar.cs" Line="1" Column="1" />
+      <File FileName="Coins/twentyPence.cs" Line="9" Column="9" />
+      <File FileName="Coins/fivePence.cs" Line="1" Column="1" />
+      <File FileName="Coins/fiftyPence.cs" Line="1" Column="1" />
+      <File FileName="Coins/twoPound.cs" Line="1" Column="1" />
+      <File FileName="Snacks/Snack.cs" Line="24" Column="39" />
       <File FileName="Snacks/cola.cs" />
-      <File FileName="Program.cs" Line="12" Column="18" />
-      <File FileName="VendingMachine.cs" Line="114" Column="41" />
-      <File FileName="Input.cs" Line="112" Column="29" />
+      <File FileName="Program.cs" Line="16" Column="1" />
+      <File FileName="VendingMachine.cs" Line="50" Column="1" />
+      <File FileName="Input.cs" Line="156" Column="49" />
+      <File FileName="README.md" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,7 +27,6 @@
             <Node name="VendingMachineProject" expanded="True">
               <Node name="Coins" expanded="True" />
               <Node name="Snacks" expanded="True" />
-              <Node name="VendingMachine.cs" selected="True" />
             </Node>
           </Node>
         </State>
