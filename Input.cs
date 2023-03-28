@@ -3,6 +3,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace VendingMachineProject
 {
+    //controller class for vending machine
 	public static class Input
 	{
         public static bool AskForInput(Snack snack, Coin coin)
@@ -39,12 +40,12 @@ namespace VendingMachineProject
 
                     if (CoinCheck(coinsToAdd))
                     {
-                        //input is greater than £10 we do not want to accept user's money
-                        if (IsGreaterThan10(coinsToAdd, inputList))
+                        //input is greater than £12 we do not want to accept user's money
+                        if (IsGreaterThan12(coinsToAdd, inputList))
 
                         {
-                            //total is > 10
-                            Console.WriteLine("Coin will not be added, {0} is greater than 10", coinsToAdd + inputList.Sum());
+                            //total is > 12
+                            Console.WriteLine("Coin will not be added, {0} is greater than 12", coinsToAdd + inputList.Sum());
                         }
 
                         else
@@ -163,9 +164,9 @@ namespace VendingMachineProject
 
         //boolean to check if sum of input is greater than 10
         //need to change this to sum of money in pool
-        private static bool IsGreaterThan10(double numberToAdd, List<double> inputList)
+        private static bool IsGreaterThan12(double numberToAdd, List<double> inputList)
         {
-            return numberToAdd + inputList.Sum() > 10;
+            return numberToAdd + inputList.Sum() > 12;
         }
 
         //boolean to check if sum of input is lower than snack price
