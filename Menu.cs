@@ -3,7 +3,7 @@ using VendingMachineProject.Snacks;
 
 namespace VendingMachineProject
 {
-    public class VendingMachine
+    public class Menu
     {
         private Coin coins;
         private Snack[] snacks;
@@ -14,7 +14,7 @@ namespace VendingMachineProject
         private bikkies Bikkies;
         private gala Gala;
 
-        public VendingMachine()
+        public Menu()
         {
             coins = new twoPound(2.0, 2, new onePound(1.0, 3, new fiftyPence(0.5, 4, new twentyPence(0.2, 5, new tenPence(0.1, 10, new fivePence(0.05, 20, null))))));
 
@@ -54,35 +54,35 @@ namespace VendingMachineProject
                 {
                     case 1:
                         {
-                            Controller.AskForInput(Cola, coins);
+                            Controller.PurchaseSnack(Cola, coins);
                         }
 
                         break;
 
                     case 2:
                         {
-                            Controller.AskForInput(ChocBar, coins);
+                            Controller.PurchaseSnack(ChocBar, coins);
                         }
 
                         break;
 
                     case 3:
                         {
-                            Controller.AskForInput(Skittles, coins);
+                            Controller.PurchaseSnack(Skittles, coins);
                         }
 
                         break;
 
                     case 4:
                         {
-                            Controller.AskForInput(Bikkies, coins);
+                            Controller.PurchaseSnack(Bikkies, coins);
                         }
 
                         break;
 
                     case 5:
                         {
-                            Controller.AskForInput(Gala, coins);
+                            Controller.PurchaseSnack(Gala, coins);
                         }
 
                         break;

@@ -5,8 +5,9 @@ namespace VendingMachineProject
 {
     //controller class for vending machine
 	public static class Controller
-	{
-        public static bool AskForInput(Snack snack, Coin coin)
+    {
+
+        public static bool PurchaseSnack(Snack snack, Coin coin)
         {
             List<double> inputList = new List<double>();
 
