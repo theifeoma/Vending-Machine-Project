@@ -3,6 +3,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace VendingMachineProject
 {
+    //controller class for vending machine
 	public static class Input
 	{
         public static bool AskForInput(Snack snack, Coin coin)
