@@ -53,10 +53,18 @@ namespace VendingMachineProject
                         {
 
 
+
+                            //printing coin for tests
+                            coin.PrintCoins();
+                            Console.WriteLine();
+
                             //coin input from user
                             inputList.Add(coinsToAdd);
 
+                            
+
                             //update inventory with input from customer
+
 
                             //input == 2
                             if (coin.getCoinValue() == coinsToAdd)
@@ -100,8 +108,7 @@ namespace VendingMachineProject
                                 five.UpdateInventory(0.05, 1);
                             }
 
-                            coin.PrintCoins();
-                            Console.WriteLine();
+                            
 
                             //change to be dispensed after purchasing
                             double changeToGiv = Math.Round(coin.ChangeChecker(inputList, snack), 4);
