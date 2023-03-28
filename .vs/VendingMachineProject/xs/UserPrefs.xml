@@ -2,22 +2,22 @@
   <MonoDevelop.Ide.ItemProperties.VendingMachineProject PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="VendingMachine.cs">
     <Files>
-      <File FileName="Coins/tenPence.cs" Line="32" Column="10" />
-      <File FileName="Coins/onePound.cs" Line="25" Column="18" />
-      <File FileName="Coins/Coin.cs" Line="21" Column="30" />
-      <File FileName="Snacks/gala.cs" Line="1" Column="1" />
-      <File FileName="Snacks/skittles.cs" Line="13" Column="2" />
-      <File FileName="Snacks/bikkies.cs" Line="1" Column="1" />
-      <File FileName="Snacks/chocBar.cs" Line="12" Column="2" />
-      <File FileName="Coins/twentyPence.cs" Line="25" Column="18" />
-      <File FileName="Coins/fivePence.cs" Line="31" Column="20" />
-      <File FileName="Coins/fiftyPence.cs" Line="37" Column="1" />
-      <File FileName="Coins/twoPound.cs" Line="39" Column="1" />
+      <File FileName="Coins/tenPence.cs" />
+      <File FileName="Coins/onePound.cs" />
+      <File FileName="Coins/Coin.cs" Line="144" Column="13" />
+      <File FileName="Snacks/gala.cs" />
+      <File FileName="Snacks/skittles.cs" />
+      <File FileName="Snacks/bikkies.cs" />
+      <File FileName="Snacks/chocBar.cs" />
+      <File FileName="Coins/twentyPence.cs" />
+      <File FileName="Coins/fivePence.cs" />
+      <File FileName="Coins/fiftyPence.cs" />
+      <File FileName="Coins/twoPound.cs" />
       <File FileName="Snacks/Snack.cs" Line="69" Column="14" />
-      <File FileName="Snacks/cola.cs" Line="15" Column="1" />
-      <File FileName="Program.cs" Line="21" Column="29" />
-      <File FileName="Input (copy).cs" Line="17" Column="45" />
-      <File FileName="VendingMachine.cs" Line="28" Column="34" />
+      <File FileName="Snacks/cola.cs" />
+      <File FileName="Program.cs" Line="12" Column="18" />
+      <File FileName="VendingMachine.cs" Line="114" Column="41" />
+      <File FileName="Input.cs" Line="112" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

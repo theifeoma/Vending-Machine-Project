@@ -141,6 +141,7 @@ namespace VendingMachineProject
             int count = (int)(amount / value);
             double remainder = Math.Round(amount % value, 4);
 
+            
 
             // if coin to dispense quantity is zero call the next coin down
             if (quantity == 0 && nextCoin != null)

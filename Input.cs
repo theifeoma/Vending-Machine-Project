@@ -50,9 +50,9 @@ namespace VendingMachineProject
                         else
                         {
 
+
                             //coin input from user
                             inputList.Add(coinsToAdd);
-
 
                             //update inventory with input from customer
 
@@ -99,6 +99,7 @@ namespace VendingMachineProject
                             }
 
                             coin.PrintCoins();
+                            Console.WriteLine();
 
                             //change to be dispensed after purchasing
                             double changeToGiv = Math.Round(coin.ChangeChecker(inputList, snack), 4);
@@ -116,8 +117,15 @@ namespace VendingMachineProject
                                     //dispense coins
                                     coin.Dispense(changeToGiv);
 
+                                    if(inputList.Sum() >= snack.getSnackPrice())
+                                {
                                     //reduce snack quantity
+                                    Console.WriteLine();
+                                    Console.WriteLine($"Here is your Snack: {snack.getSnackName()}");
                                     snack.reduceSnackQuantity();
+                                }
+                                    
+                                    
                             }
                             else
                             {
@@ -182,6 +190,7 @@ namespace VendingMachineProject
             
         }
 
+        //admin menu: increase change pool
         public static void increaseChangePool(Coin coins)
         {
 
@@ -202,6 +211,7 @@ namespace VendingMachineProject
             }
         }
 
+        //admin menu: get total change pool
         public static void getTotalMoneyInPool(Coin coins)
         {
             double total = coins.GetTotalValue();
@@ -218,6 +228,7 @@ namespace VendingMachineProject
             Console.WriteLine();
         }
 
+        //admin menu: change snack price
         public static void ChangeSnackPrice(Snack[] snacks)
         {
 

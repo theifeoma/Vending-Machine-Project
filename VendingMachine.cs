@@ -112,6 +112,8 @@ namespace VendingMachineProject
                                         Console.WriteLine("   Please enter your choice: ");
 
                                         int adminOption = Convert.ToInt32(Console.ReadLine());
+                                        
+                                       
 
                                         switch (adminOption)
                                         {
@@ -133,7 +135,7 @@ namespace VendingMachineProject
                                                 break;
 
                                             case 4:
-                                                //go back to customer menu with "if" statement below
+                                                //go back to customer menu
                                                 break;
 
                                             default:
@@ -146,7 +148,6 @@ namespace VendingMachineProject
                                 default:
                                     Console.WriteLine("Password incorrect");
 
-                                    //option to go to back menu maybe
                                     break;
                             }
 
@@ -154,7 +155,7 @@ namespace VendingMachineProject
                         break;
 
                     default:
-                        Console.WriteLine("Please enter an option from 1 - 5");
+                        Console.WriteLine("Invalid Snack Selection. Please enter an option from 1 - 5");
                         break;
                 }
 
